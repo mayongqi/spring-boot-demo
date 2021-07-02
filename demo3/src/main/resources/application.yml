@@ -1,0 +1,89 @@
+server:
+  port: 8081
+
+# 整合mybatis
+mybatis:
+  #  typeAliasesPackage: com.example.demo.model
+  mapper-locations: classpath*:/mapper/*.xml
+
+#执行sql打印
+logging:
+  level:
+    com.example.demo.mapper.*: DEBUG
+
+#spring配置
+spring:
+  #数据库配置
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    druid:
+      url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
+      username: root
+      password: root
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      max-wait: 30000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select '1' from dual
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      max-pool-prepared-statement-per-connection-size: 20
+      filters: stat,wall
+      #aop-patterns: com.springboot.servie.*
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+
+      # WebStatFilter配置
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        reset-enable: false
+        login-username: ma
+        login-password: ma123
+        # allow: 127.0.0.1
+        # deny: 192.168.1.218
+  servlet:
+    #文件上传配置
+    multipart:
+      #指定默认上传的文件夹
+      location: D:/upload
+      #限制单个文件最大大小，这里设置为 5MB
+      max-file-size: 5242880
+      #限制所有文件最大大小， 这里设置为 1024MB
+      max-request-size: 1024MB
+
+  security:
+    user:
+      name: ma
+      password: ma123
+
+  #thymeleaf配置
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    encoding: UTF-8
+    suffix=: .html
+    mode: HTML
+
+  #redi配置  已在RedisConfig中配置
+#  redis:
+#    jedis:
+#      pool:
+#        min-idle: 5
+#        max-active: 10
+#        max-idle: 10
+#        max-wait: 2000
+#    port: 6379
+#    host: 127.0.0.1
+#    password:
+#    timeout: 1000
