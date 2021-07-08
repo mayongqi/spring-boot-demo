@@ -36,7 +36,7 @@ spring:
       max-pool-prepared-statement-per-connection-size: 20
       filters: stat,wall
       #aop-patterns: com.springboot.servie.*
-      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500.html
 
       # WebStatFilter配置
       web-stat-filter:
@@ -62,10 +62,10 @@ spring:
       #限制所有文件最大大小， 这里设置为 1024MB
       max-request-size: 1024MB
 
-  security:
-    user:
-      name: ma
-      password: ma123
+#  security:
+#    user:
+#      name: ma
+#      password: ma123
 
   #thymeleaf配置
   thymeleaf:

@@ -10,45 +10,53 @@ import java.util.Map;
 
 @Controller
 public class WelcomeController  {
-	
-	@GetMapping("/welcome")
-	public String welcome() {
-		return "welcome";
+
+
+	@GetMapping("/404")
+	public String notFoundPage() {
+		return "404";
 	}
 
-	
-	@GetMapping("/user/welcome")
-	public String userWelcome() {
-		return "welcome";
+	@GetMapping("/403")
+	public String accessError() {
+		return "403";
 	}
-	
-	@GetMapping("/admin/welcome")
-	public String adminWelcome() {
-		return "welcome";
+
+	@GetMapping("/500")
+	public String internalError() {
+		return "500";
 	}
-	
-	@GetMapping("/admin/welcome1")
-	public String adminWelcome1() {
-		return "welcome";
-	}
-	
-	@GetMapping("/admin/welcome2")
-	public String adminWelcome2() {
-		return "welcome";
-	}
-	
-	@GetMapping("/csrf/form")
-	public String csrfPage() {
-		return "csrf_form";
-	}
-	
-	@PostMapping("/csrf/commit")
+
+	@GetMapping("/success")
 	@ResponseBody
-	public Map<String, String> csrfCommit(String name, String describe) {
-		Map<String, String> map = new HashMap<>();
-		map.put("name", name);
-		map.put("describe", describe);
-		return map;
+	public String success(){
+		return "认证成功,进入success成功";
 	}
-	
+
+	@GetMapping(value = "/user/login")
+	private String loginPage(){
+		return "login";
+	}
+
+	@GetMapping(value = "/person")
+	public String personPage(){
+		return "person";
+	}
+
+	@GetMapping(value = "/admin/index")
+	public String adminPage(){
+		return "admin";
+	}
+
+
+	@GetMapping(value = "/index")
+	public String index(){
+		return "index";
+	}
+
+	@GetMapping(value = "webSocket")
+	public String webSocket(){
+		return "webSocket";
+	}
+
 }

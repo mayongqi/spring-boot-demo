@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Test {
     public static void main(String[] args) {
@@ -29,14 +30,20 @@ public class Test {
 
 //        method3();
 
-//        method4();$2a$10$2Vvsu/2d5RFInYn7W7QjXe  $2a$10$eoKN7.6NsLLWIUSsVhj7de
-        //2d5RFInYn7W7QjXenkPjsj1Nu8r55zK8eLHKisqKC9AR3Pq
-        //$2a$10$eoKN7.6NsLLWIUSsVhj7deDLb.l0wAOgCf5wOQVobP1YClNn4H.ia
+//        method4();
+
+//        method5();
+
+        AtomicInteger a = new AtomicInteger(0);
+        System.out.println(a.decrementAndGet());
+        System.out.println(a.incrementAndGet());
+    }
+
+    private static void method5() {
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String ma123 = passwordEncoder.encode("ma123");
 
         System.out.println(ma123);
-
     }
 
     private static void method4() {
